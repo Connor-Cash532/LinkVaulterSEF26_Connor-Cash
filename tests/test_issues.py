@@ -67,6 +67,11 @@ def test_issue_11():
     assert result == [{"id": 1, "archived": False}]
     assert links == [{"id": 1, "archived": False}, {"id": 2, "archived": True}]
 
+    new_links = [{"id": 1, "archived": True}, {"id": 2, "archived": True}]
+    result = active_links(new_links)
+    assert result == []
+    assert new_links == [{"id": 1, "archived": True}, {"id": 2, "archived": True}]
+
 
 def test_issue_12():
     links = [{"title": "Python Guide", "url": "https://example.com"}, {"title": "Other", "url": "https://PYTHON.org"}]
