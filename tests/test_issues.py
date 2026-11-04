@@ -82,7 +82,7 @@ def test_issue_11_all_archived():
     assert links == [{"id": 1, "archived": True}, {"id": 2, "archived": True}]
 
 
-# Tests list of links that are all archived
+# Tests list of links that are all non-archived
 def test_issue_11_all_non_archived():
     links = [{"id": 1, "archived": False}, {"id": 2, "archived": False}]
     result = active_links(links)
@@ -112,7 +112,7 @@ def test_issue_11_duplicate_links():
     assert result == [{"id": 1, "archived": False}, {"id": 1, "archived": False}]
     assert links == [{"id": 1, "archived": False}, {"id": 1, "archived": False}, {"id": 2, "archived": True}]
 
-# Tests link list with malinformed archived key
+# Tests link list with maformed archived key
 def test_issue_11_malformed_links():
     links = [{"id": 1, "archived": False}, {"id": 1, "archived": False}, {"id": 2, "archived": True}, {"id": 3, "archhived": False}]
     result = active_links(links)
