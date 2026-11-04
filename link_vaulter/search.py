@@ -8,8 +8,9 @@ def active_links(links: list[dict]) -> list[dict]:
     """Issue 11: return only non-archived links without mutating the list"""
     nonarchived_links = []
     for link in links:
-        if not link["archived"]:
-            nonarchived_links.append(link)
+        if "archived" in link:
+            if not link["archived"]:
+                nonarchived_links.append(link)
     return nonarchived_links
 
 

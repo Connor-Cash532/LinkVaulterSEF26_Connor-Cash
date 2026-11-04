@@ -112,6 +112,13 @@ def test_issue_11_duplicate_links():
     assert result == [{"id": 1, "archived": False}, {"id": 1, "archived": False}]
     assert links == [{"id": 1, "archived": False}, {"id": 1, "archived": False}, {"id": 2, "archived": True}]
 
+# Tests link list with malinformed archived key
+def test_issue_11_malformed_links():
+    links = [{"id": 1, "archived": False}, {"id": 1, "archived": False}, {"id": 2, "archived": True}, {"id": 3, "archhived": False}]
+    result = active_links(links)
+    assert result == [{"id": 1, "archived": False}, {"id": 1, "archived": False}]
+    assert links == [{"id": 1, "archived": False}, {"id": 1, "archived": False}, {"id": 2, "archived": True}, {"id": 3, "archhived": False}]
+
 
 def test_issue_12():
     links = [{"title": "Python Guide", "url": "https://example.com"}, {"title": "Other", "url": "https://PYTHON.org"}]
