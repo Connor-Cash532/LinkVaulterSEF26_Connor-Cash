@@ -229,3 +229,8 @@ def test_issue_30_malformed():
               {"url": "www.owaHlla.com"}]
     assert unique_domains(links) == 1
 
+def test_issue_30_multiple_www():
+    links  = [{"url": "https://www.www.OWALA.com"},
+              {"url": "https://OwAlA.com"}]
+    assert unique_domains(links) == 1
+

@@ -38,13 +38,10 @@ def unique_domains(links: list[dict]) -> int:
         u = urlsplit(item["url"])
         hostname = u.hostname
         link_scheme = u.scheme
-        print(u)
         if hostname is not None:
             if link_scheme == "http" or link_scheme == "https" and "." in hostname:
-                if 'www.' in hostname:
-                    hostname = hostname.split("www.", 1)[1]
+                while 'www.' in hostname:
+                    hostname = hostname.split('www.', 1)[1]
                 hostname_set.add(hostname)
-
-
     return len(hostname_set)
 
