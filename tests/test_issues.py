@@ -236,7 +236,13 @@ def test_issue_30_multiple_www():
     assert unique_domains(links) == 2
 
 #Test for local host
-def test_issue_30_multiple_www():
+def test_issue_30_local_host():
     links  = [{"url": "https://localhost:12.12.12.13.com"},
               {"url": "https://12.12.12.13.com"}]
+    assert unique_domains(links) == 1
+
+#Test that login credentials are not part of the domain
+def test_issue_30_login_credentials():
+    links = [{"url": "https://user:password@example.com/login"},
+             {"url": "https://example.com/login"}]
     assert unique_domains(links) == 1
