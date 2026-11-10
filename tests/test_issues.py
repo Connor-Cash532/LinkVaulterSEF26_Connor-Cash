@@ -173,7 +173,7 @@ def test_issue_30():
     ]
     assert unique_domains(links) == 2
 
-# Test for case that their are no links
+# Test for case that there are no links
 def test_issue_30_empty_list():
     links = []
     assert unique_domains(links) == 0
@@ -229,8 +229,14 @@ def test_issue_30_malformed():
               {"url": "www.owaHlla.com"}]
     assert unique_domains(links) == 1
 
+#Test for multiple www
 def test_issue_30_multiple_www():
     links  = [{"url": "https://www.www.OWALA.com"},
               {"url": "https://OwAlA.com"}]
-    assert unique_domains(links) == 1
+    assert unique_domains(links) == 2
 
+#Test for local host
+def test_issue_30_multiple_www():
+    links  = [{"url": "https://localhost:12.12.12.13.com"},
+              {"url": "https://12.12.12.13.com"}]
+    assert unique_domains(links) == 1
