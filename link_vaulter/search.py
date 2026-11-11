@@ -6,9 +6,12 @@ from __future__ import annotations
 # Function returns the non-archived links
 def active_links(links: list[dict]) -> list[dict]:
     """Issue 11: return only non-archived links without mutating the list"""
-    nonarchived_links = []
-    for link in links:
+    nonarchived_links = [] # List that will contain non-archived links
+    for link in links: # loops through every link in the input
+
+        # Checks that the dictionary contains the archive key to prevent accessing an unavailable key causing a key error.
         if "archived" in link:
+            # Adds a link to non_archived links list if the value for the archived key is false
             if not link["archived"]:
                 nonarchived_links.append(link)
     return nonarchived_links
